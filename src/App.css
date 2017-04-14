@@ -1,14 +1,104 @@
-/*==========================================================================
-   Author's custom styles
-   ========================================================================== */
 
 body {
   padding-top: 30px;
 	padding-bottom: 20px;
-	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../img/rocket-wallpaper-2.jpg") no-repeat center center fixed;
+	background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)) #133b47 no-repeat center center fixed;
 	background-size: cover;
 	color: white;
   overflow-x: hidden;
+}
+
+.active {
+  background: black;
+}
+
+.active .glyphicon {
+  color: steelblue;
+}
+
+.navbar-primary {
+  bottom: 0px;
+  left: 0px;
+  position: fixed;
+  top: 0px;
+  width: 200px;
+  z-index: 8;
+  overflow: hidden;
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+}
+
+.navbar-primary.collapsed {
+  width: 82px;
+}
+
+.navbar-primary.collapsed .glyphicon {
+  font-size: 15px;
+}
+
+.navbar-primary.collapsed .nav-label {
+  display: none;
+}
+
+.btn-expand-collapse {
+    position: absolute;
+    display: block;
+    left: 0px;
+    bottom:0;
+    width: 100%;
+    padding: 8px 0;
+    border-top:solid 1px #666;
+    color: grey;
+    font-size: 20px;
+    text-align: center;
+}
+
+.btn-expand-collapse:hover,
+.btn-expand-collapse:focus {
+    background-color: black;
+    color: steelblue;
+}
+
+.btn-expand-collapse:active {
+    background-color: #111;
+}
+
+.navbar-primary-menu,
+.navbar-primary-menu li {
+  margin:0; padding:0;
+  list-style: none;
+}
+
+.navbar-primary-menu li a {
+  display: block;
+  padding: 10px 18px;
+  text-align: left;
+  border-bottom:solid 1px #444;
+  color: #ccc;
+}
+
+.navbar-primary-menu li a:hover {
+  background-color: #000;
+  text-decoration: none;
+  color: white;
+}
+
+.navbar-primary-menu li a .glyphicon {
+  margin-right: 6px;
+}
+
+.navbar-primary-menu li a:hover .glyphicon {
+  color: steelblue;
+}
+
+.main-content {
+  margin-left: 200px;
+  padding: 20px;
+}
+
+.collapsed + .main-content {
+  margin-left: 82px;
 }
 
 a, a:hover, a:visited, a:link, a:active
@@ -27,62 +117,11 @@ select {
   color: black;
 }
 
-img {
-  text-align: center;
-}
-
-.hidden-navbar {
-  transform: translateY(-50px);
-  -webkit-transform:translateY(-50px);
-  -moz-transform: translateY(-50px);
-}
-
-.navbar {
-  transition: all .5s ease-in-out;
-  -webkit-transition: all .5s ease-in-out;
-  -moz-transition: all .5s ease-in-out;
-}
-
-
-a.carousel-control {
-  color: white;
-}
-
-.jumbotron {
-  margin-bottom: 60px;
-}
-
-.multi-carousel img {
-  width: 200px;
-  height: 200px;
-  border: solid black;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-
 .btn-gradient {
   border-color: black;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)); 
   color: white;
 }
-
-.btn-margin {
-  margin-left: 5px;
-  margin-right: 5px;
-}
-
-.white-border {
-  border: 1px solid;
-  border-color:white;
-  padding: 10px;
-}
-
- .loading-container {
-    margin-top: 33vh;
-    margin-bottom: 33vh;
-    text-align: center;
-  }
 
 .gradient {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
@@ -102,101 +141,10 @@ a.carousel-control {
   background: -moz-linear-gradient(to top, rgba(0, 255, 0, 0.3), rgba(0, 255, 0, 0.3));
 }
 
-    
-.carousel-full {
-  height: 93vh;
-  margin-bottom: 60px; }
-
-.carousel-indicators {
-  position: absolute;
-  bottom: 10px; }
-
-/* make sidebar nav vertical */ 
-@media (min-width: 768px) {
-  .sidebar-nav .navbar .navbar-collapse {
-    padding: 0;
-    max-height: none;
-  }
-  .sidebar-nav .navbar ul {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li {
-    float: none;
-    display: block;
-  }
-  .sidebar-nav .navbar li a {
-    text-align: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-}
-
-.carousel-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0; }
-
-.carousel-caption p {
-  margin-top: 20px;
-  margin-bottom: 40px; 
-  }
-
-.carousel-caption a {
-  color: white;
-}
-
-/* Declare heights because of positioning of img element */
-.carousel-full .item {
-  height: 93vh;
-  background-color: #777; }
-
-.carousel-full > .carousel-inner > .item > img {
-  min-width: 100%;
-  min-height: 100%; }
-
-.img-circle {
-  margin-top: 20px;
-  margin-bottom: 20px; }
-
-/* Center align the text within the two columns below the carousel */
-.marketing .col-lg-6 {
-  margin-bottom: 20px;
-  text-align: center; }
-.marketing h2 {
-  font-weight: normal;
-  text-align: center; }
-
-.selection-row {
-  padding: 10px; }
-
-.signup-row {
-  padding: 40px; }
-
-.signup-info {
-  max-width: 500px;
-  text-align: center;
-  margin: auto;
-  margin-top: 30px; }
-
 hr {
   border-color: #000000;
   margin-top: 30px;
   margin-bottom: 30px; }
-
-.food-types .row {
-  margin: 20px; }
-
-.food {
-  padding: 20px;
-  text-align: center;
-  color: white; }
-
-.food a {
-  color: white; }
-.food h2 {
-  margin-bottom: 10px; }
 
 .signup-form {
   border-radius: 5px; 
@@ -216,9 +164,6 @@ textarea {
       padding: 10px;
       padding-bottom: 40px; 
     }
-}
-  
-.form-container {
 }
 
 .centered-text {

@@ -5,10 +5,13 @@ import UpdateUserForm from './UpdateUserForm.jsx';
 
 export default class App extends React.Component {
 
+  ADD_USER = 'ADD_USER';
+  UPDATE_USER = 'UPDATE_USER';
+
   componentWillMount() {
-    console.log('mounted');
     this.state = {
-      currentScreen: this.ADD_USER
+      currentScreen: this.ADD_USER,
+      collapsed: false
     }
   }
 
@@ -27,50 +30,62 @@ export default class App extends React.Component {
     return this.state.currentScreen === screen ? "active" : null;
   }
 
-  ADD_USER = 'ADD_USER';
-  UPDATE_USER = 'UPDATE_USER';
+  collapseSideBar(collapse) {
+    this.setState({
+      currentScreen: this.state.currentScreen,
+      collapsed: collapse
+    })
+  }
 
   changeScreen(screen) {
     this.setState({
-      currentScreen: screen
+      currentScreen: screen,
+      collapsed: this.state.collapsed
     });
   }
 
   render() {
     return (
-      <div className="row container">
-        <div className="col-sm-3">
-          <div className="sidebar-nav">
-            <div className="navbar navbar-inverse gradient" role="navigation">
-              <div className="navbar-header">
-                <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".sidebar-navbar-collapse">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                  <span className="icon-bar"></span>
-                </button>
-                <span className="visible-xs navbar-brand">Select View</span>
-              </div>
-              <div className="navbar-collapse collapse sidebar-navbar-collapse">
-                <ul className="nav navbar-nav">
-                  <li className={this.isActive(this.ADD_USER)}>
-                    <a onClick={this.changeScreen.bind(this, this.ADD_USER)}>Add Users</a>
-                  </li>
-                  <li className={this.isActive(this.UPDATE_USER)}>
-                    <a onClick={this.changeScreen.bind(this, this.UPDATE_USER)}>Update Users</a>
-                  </li>
-                  <li>
-                    <a>View Users <span className="badge">1,118</span></a>
-                  </li>
-                  <li>
-                    <a>Delete Users</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="col-sm-9">
+      <div>
+        <nav className={this.state.collapsed ? "collapsed navbar-primary gradient" : "navbar-primary gradient"}>
+          <a onClick={this.collapseSideBar.bind(this, !this.state.collapsed)} className="btn-expand-collapse">
+            <span className={this.state.collapsed ? "glyphicon glyphicon-menu-right" : "glyphicon glyphicon-menu-left"}></span>
+          </a>
+          <ul className="navbar-primary-menu">
+            <li className={this.isActive(this.ADD_USER)}>
+              <a onClick={this.changeScreen.bind(this, this.ADD_USER)}>
+                <span className="glyphicon glyphicon-user"></span>
+                <span className="glyphicon glyphicon-plus"></span>
+                <span className="nav-label">     Add User</span>
+              </a>
+            </li>
+
+            <li className={this.isActive(this.UPDATE_USER)}>
+              <a onClick={this.changeScreen.bind(this, this.UPDATE_USER)}>
+                <span className="glyphicon glyphicon-user"></span>
+                <span className="glyphicon glyphicon-refresh"></span>
+                <span className="nav-label">     Update User</span>
+              </a>
+            </li>
+
+            <li>
+              <a>
+                <span className="glyphicon glyphicon-user"></span>
+                <span className="glyphicon glyphicon-eye-open"></span>
+                <span className="nav-label">     View Users</span>
+              </a>
+            </li>
+
+            <li>
+              <a>
+                <span className="glyphicon glyphicon-user"></span>
+                <span className="glyphicon glyphicon-remove"></span>
+                <span className="nav-label">     Delete User</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <div className="main-content">
           {this.selectScreen()}
         </div>
       </div>

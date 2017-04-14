@@ -11,6 +11,7 @@ export default class AddUserForm extends Component {
                     <InputComponent label="Name" />
                     <InputComponent label="Email" />
                     <InputComponent label="Role" />
+                    <InputComponent label="Salary" type="number" />
 
                     <button type="button" className="btn btn-lg btn-primary center-block">Save</button>
                 </FormContainer>
